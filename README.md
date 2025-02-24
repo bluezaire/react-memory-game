@@ -1,6 +1,31 @@
+# React Memory Game
+
+This project was a training exercise on Scrimba called [Memory Game in React](https://scrimba.com/memory-game-in-react-c0a3odsk39/~0dq)
+
+There is also a video tutorial called [Build a Memory Game in React Tutorial](https://www.youtube.com/watch?v=MzVbgZgGON4) on youtube. Since this repo has the code, the Youtube video is probably sufficient.
+
+The layout of the files index.html and index.css files is slightly different. I had to put them under the public folder. I think this is just becuase the demonstration was not specific to a development environment.
+
+I wasn't able to use the Emoji API, so I found an alternative that worked for me. This means some of the mapping for hte API is slightly different.
+
+I also had to run the following npm commands to get the required dependencies installed:
+npm i html-entities
+
+Make the game your own. Add one of the following:
+
+1. Timer/counter
+2. React Countext API
+3. React Router
+4. Redesign
+5. Different API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+From the project folder, run the following command to create the project:
+
+### `npx create-react-app react-memory-game`
 
 ## Available Scripts
 
