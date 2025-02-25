@@ -11,7 +11,7 @@ export default function MemoryCard({ handleClick, data, selectedCards, matchedCa
 
     const emojiEl = data.map((emoji, index) => {
         var endRow = index % x === 0 && index > 0;
-        console.log("index:"+index+" endRow:"+endRow)
+        //console.log("index:"+index+" endRow:"+endRow)
 
         const selectedCardEntry = selectedCards.find(emoji => emoji.index === index)
         const matchedCardEntry = matchedCards.find(emoji => emoji.index === index)
@@ -44,6 +44,7 @@ If we use this logic, then we have to add card-item to the className since it's 
             endRow && (<br />)*/}   
             <li key={index} className={cardStyle}>
                 <EmojiButton
+                    key={index}
                     index={index}
                     emoji={emoji}
                     handleClick={() => handleClick(emoji.slug, index)}

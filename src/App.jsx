@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/dom';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Form from './components/Form'
 import MemoryCard from './components/MemoryCard'
 import AssistiveTechInfo from './components/AssistiveTechInfo'
@@ -14,13 +14,14 @@ import ErrorCard from './components/ErrorCard'
 */
 const BASE_URL = "https://emoji-api.com";
 const API_KEY = "access_key=e27436ecb6d79e13539262a80e15506903d41699";
+let alertTimeout;
 
 export default function App() {
     const initialFormData = {category: "animals-nature", number:10}
 
     const [isFirstRender, setIsFirstRender] = useState(true);
     const [formData, setFormData] = useState(initialFormData)
-    console.log(`formData: ${formData.category} : ${formData.number}`)
+    //console.log(`formData: ${formData.category} : ${formData.number}`)
     const [isGameOn, setIsGameOn] = useState(false)
     const [emojisData, setemojisData] = useState([])
     //console.log(emojisData)
@@ -30,17 +31,40 @@ export default function App() {
     const [areAllCardsMatched, setAreAllCardsMatched] = useState(false)
     //console.log("areAllCardsMatched:"+areAllCardsMatched)
     const [isError, setIsError] = useState(false)
-    console.log("isError:"+isError)
-    
+    //console.log("isError:"+isError)
+
+    const timeoutId = useRef(null);
+
+    const startTimeout = () => {
+      timeoutId.current = setTimeout(() => {
+        setSelectedCards([])
+        console.log('Timeout finished!');
+      }, 800);
+      console.log('Timeout started...');
+    };
+  
+    const stopTimeout = () => {
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current);
+        timeoutId.current = null; // Reset timeoutId
+        console.log('Timeout stopped!');
+      } else {
+        console.log('No timeout is currently running.');
+      }
+    };
+
     useEffect(() => {
         console.log("selectedCards:"+selectedCards.length)
         if (selectedCards.length === 2 && selectedCards[0].name === selectedCards[1].name) {
             setMatchedCards(prevMatchedCards => [...prevMatchedCards, ...selectedCards])
+        } else if (selectedCards.length === 2) {
+            console.log("flip cards back over")
+            startTimeout()
         }
     }, [selectedCards])
     
     useEffect(() => {
-        console.log("matchedCards:"+matchedCards.length)
+        //console.log("matchedCards:"+matchedCards.length)
         if (emojisData.length && matchedCards.length === emojisData.length) {
             setAreAllCardsMatched(true)
         }
@@ -149,6 +173,7 @@ export default function App() {
     }    
     
     function turnCard(name, index) {
+        stopTimeout()
         //console.log(`The emoji ${name} at index ${index} was clicked!`)
         /*
             Due to the differences between the 2 API's, we will mapp slug into the name field to keep this function 
