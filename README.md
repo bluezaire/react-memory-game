@@ -19,6 +19,12 @@ Make the game your own. Add one of the following:
 4. Redesign
 5. Different API
 
+To deploy this on GitHub so you can play it, use to following:
+[Deploying a React App\* to GitHub Pages](https://github.com/gitname/react-gh-pages)
+
+The game can be played here:
+[Memory Game](https://bluezaire.github.io/react-memory-game/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
