@@ -32,7 +32,7 @@ To deploy, first commit and push your work to github for your branch so you don'
 
 for example:
 
-### `git push origin/master`
+### `git push origin master`
 
 go to the branch you want to deploy and run the following
 
@@ -49,7 +49,7 @@ To do this, run the following
 
 for example:
 
-### `git checkout origin/master`
+### `git checkout origin master`
 
 The game can be played here:
 [Memory Game](https://bluezaire.github.io/react-memory-game/)
