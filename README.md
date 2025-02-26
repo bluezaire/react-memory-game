@@ -22,6 +22,35 @@ Make the game your own. Add one of the following:
 To deploy this on GitHub so you can play it, use to following:
 [Deploying a React App\* to GitHub Pages](https://github.com/gitname/react-gh-pages)
 
+To deploy, first commit and push your work to github for your branch so you don't lose anything in the deploy process
+
+### `git add .`
+
+### `git commit -m "[your commit message]"`
+
+### `git push [alias]/[branch]`
+
+for example:
+
+### `git push origin/master`
+
+go to the branch you want to deploy and run the following
+
+### `npm run deploy -- -m "[your commit message]"`
+
+per the documentation, this will run predeploy and deploy and commit the work to the gh-pages branch.
+
+The previous command will alter your workspace. Therefore, you need to check out the branch again so it
+doesn't contain the changes that were made to publish to the gh-pages branch.
+
+To do this, run the following
+
+### `git checkout [alias]/[branch]`
+
+for example:
+
+### `git checkout origin/master`
+
 The game can be played here:
 [Memory Game](https://bluezaire.github.io/react-memory-game/)
 
